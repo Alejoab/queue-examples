@@ -15,4 +15,4 @@ Route::get('/user', function () {
     ];
     CreateUserAction::execute($array);
     return response()->json(['message' => 'User created successfully!']);
-});
+})->name('users.create');
