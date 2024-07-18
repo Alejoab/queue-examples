@@ -11,6 +11,6 @@ class CreateUserAction
     {
         $user = User::query()->create($data);
 
-        SendWelcomeEmailJob::dispatchSync($user);
+        SendWelcomeEmailJob::dispatch($user);
     }
 }
