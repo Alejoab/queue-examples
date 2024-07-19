@@ -4,13 +4,12 @@ namespace App\Mail;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CreatedUser extends Mailable
+class DeletedUser extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,14 +21,14 @@ class CreatedUser extends Mailable
     {
         return new Envelope(
             to: $this->user->email,
-            subject: 'Se ha creado tu usuario correctamente',
+            subject: 'Se ha eliminado tu usuario correctamente',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            view: 'mail.welcome',
+            view: 'mail.farewell',
             with: [
                 'name' => $this->user->name,
             ],
