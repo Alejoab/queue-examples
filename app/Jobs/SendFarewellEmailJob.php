@@ -2,16 +2,14 @@
 
 namespace App\Jobs;
 
-use App\Mail\CreatedUser;
+use App\Mail\DeletedUser;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendWelcomeEmailJob implements ShouldQueue
+class SendFarewellEmailJob implements ShouldQueue
 {
     use Queueable;
     use SerializesModels;
@@ -22,6 +20,6 @@ class SendWelcomeEmailJob implements ShouldQueue
 
     public function handle(): void
     {
-        Mail::send(new CreatedUser($this->user));
+        Mail::send(new DeletedUser($this->user));
     }
 }
